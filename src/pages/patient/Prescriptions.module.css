@@ -1,0 +1,25 @@
+.loading { padding: var(--space-10); text-align: center; color: var(--color-outline); }
+.page { display: flex; flex-direction: column; gap: var(--space-6); }
+.title { font: var(--text-headline-md); color: var(--color-on-surface); }
+.sectionTitle { font: var(--text-title-lg); color: var(--color-on-surface); margin-bottom: var(--space-3); }
+.empty { text-align: center; color: var(--color-outline); font: var(--text-body-md); padding: var(--space-4); }
+.list { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.rxHeader { display: flex; justify-content: space-between; margin-bottom: var(--space-3); }
+.rxDate { font: var(--text-label-lg); color: var(--color-primary); }
+.rxDoctor { font: var(--text-label-md); color: var(--color-outline); }
+.medList { display: flex; flex-direction: column; gap: var(--space-3); }
+.medRow { display: flex; align-items: flex-start; gap: var(--space-3); }
+.medIcon { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+.medInfo { display: flex; flex-direction: column; gap: 1px; }
+.medName { font: var(--text-label-lg); color: var(--color-on-surface); }
+.medDetails { font: var(--text-body-sm); color: var(--color-on-surface-variant); }
+.medInstr { font: var(--text-body-sm); color: var(--color-outline); font-style: italic; }
+.rxNotes { font: var(--text-body-sm); color: var(--color-on-surface-variant); margin-top: var(--space-3); padding-top: var(--space-3); }
+
+.visitHeader { display: flex; justify-content: space-between; margin-bottom: var(--space-2); }
+.visitDate { font: var(--text-label-lg); color: var(--color-primary); }
+.visitDoc { font: var(--text-label-md); color: var(--color-outline); }
+.visitDiag { font: var(--text-title-sm); color: var(--color-on-surface); margin-bottom: var(--space-2); }
+.symptoms { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-2); }
+.visitTreat { font: var(--text-body-sm); color: var(--color-on-surface-variant); margin-bottom: var(--space-2); }

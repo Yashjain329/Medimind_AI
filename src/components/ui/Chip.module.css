@@ -1,0 +1,38 @@
+/* Full pill roundness (9999px) per DESIGN.md for status chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-full);
+  font: var(--text-label-md);
+  white-space: nowrap;
+}
+
+.sm { padding: 2px var(--space-2); font: var(--text-label-sm); }
+.md { padding: var(--space-1) var(--space-3); }
+
+.default {
+  background: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+}
+.success {
+  background: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+.warning {
+  background: var(--color-tertiary-fixed);
+  color: var(--color-on-tertiary-fixed);
+}
+.error {
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+.info {
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}

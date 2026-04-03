@@ -1,0 +1,140 @@
+.loading {
+  padding: var(--space-10);
+  text-align: center;
+  font: var(--text-body-lg);
+  color: var(--color-outline);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.sectionTitle {
+  font: var(--text-title-lg);
+  color: var(--color-on-surface);
+}
+
+.emptyText {
+  font: var(--text-body-md);
+  color: var(--color-outline);
+  text-align: center;
+  padding: var(--space-4);
+}
+
+/* Appointment card */
+.appointmentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.aptCard {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.aptTime {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font: var(--text-label-lg);
+  color: var(--color-primary);
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.aptInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.aptHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.aptName {
+  font: var(--text-label-lg);
+  color: var(--color-on-surface);
+  display: block;
+}
+
+.aptReason {
+  font: var(--text-body-sm);
+  color: var(--color-on-surface-variant);
+  display: block;
+}
+
+/* Risk list */
+.riskSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.riskList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.riskCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.riskName {
+  font: var(--text-label-lg);
+  color: var(--color-on-surface);
+  display: block;
+}
+
+.riskConditions {
+  font: var(--text-body-sm);
+  color: var(--color-outline);
+  display: block;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

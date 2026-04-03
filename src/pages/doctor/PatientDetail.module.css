@@ -1,0 +1,39 @@
+.loading { padding: var(--space-10); text-align: center; color: var(--color-outline); }
+.page { display: flex; flex-direction: column; gap: var(--space-5); }
+.profileSection { display: flex; align-items: center; gap: var(--space-5); padding: var(--space-5) 0; }
+.profileInfo { display: flex; flex-direction: column; gap: var(--space-2); }
+.profileName { font: var(--text-headline-md); color: var(--color-on-surface); }
+.profileMeta { font: var(--text-body-md); color: var(--color-on-surface-variant); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.grid { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-6); align-items: start; }
+.mainCol { display: flex; flex-direction: column; gap: var(--space-6); }
+.sideCol { display: flex; flex-direction: column; gap: var(--space-5); position: sticky; top: 80px; }
+
+.sectionTitle { font: var(--text-title-md); color: var(--color-on-surface); margin-bottom: var(--space-3); }
+.muted { font: var(--text-body-sm); color: var(--color-outline); }
+
+.vitalsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: var(--space-3); }
+.conditions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.visitList { display: flex; flex-direction: column; gap: var(--space-3); }
+.visitHeader { display: flex; justify-content: space-between; margin-bottom: var(--space-2); }
+.visitDate { font: var(--text-label-lg); color: var(--color-primary); }
+.visitDoctor { font: var(--text-label-md); color: var(--color-outline); }
+.visitDiag { font: var(--text-title-sm); color: var(--color-on-surface); margin-bottom: var(--space-1); }
+.visitTreat { font: var(--text-body-sm); color: var(--color-on-surface-variant); }
+.followUp { font: var(--text-label-sm); color: var(--color-tertiary); margin-top: var(--space-2); }
+
+.aptList { display: flex; flex-direction: column; gap: var(--space-2); }
+.aptRow { display: flex; align-items: center; gap: var(--space-3); }
+.aptDate { font: var(--text-label-lg); color: var(--color-primary); min-width: 140px; }
+.aptReason { flex: 1; font: var(--text-body-sm); color: var(--color-on-surface-variant); }
+
+.medList { display: flex; flex-direction: column; gap: var(--space-2); }
+.medCard { display: flex; align-items: flex-start; gap: var(--space-3); }
+.medIcon { color: var(--color-primary); margin-top: 2px; flex-shrink: 0; }
+.medName { font: var(--text-label-lg); color: var(--color-on-surface); display: block; }
+.medFreq { font: var(--text-body-sm); color: var(--color-on-surface-variant); display: block; }
+.medInstr { font: var(--text-body-sm); color: var(--color-outline); display: block; font-style: italic; }
+
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }

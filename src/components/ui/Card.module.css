@@ -1,0 +1,43 @@
+.card {
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  animation: fadeInUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Variants — tonal layering, no borders per DESIGN.md */
+.elevated {
+  background: var(--color-surface-container-lowest);
+  box-shadow: var(--shadow-sm);
+}
+.filled {
+  background: var(--color-surface-container-low);
+}
+.outlined {
+  background: var(--color-surface-container-lowest);
+  border: var(--border-ghost);
+}
+
+/* Padding */
+.padSm { padding: var(--space-4); }
+.padMd { padding: var(--space-6); }
+.padLg { padding: var(--space-8); }
+
+/* Hover */
+.hoverable {
+  cursor: pointer;
+}
+.hoverable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

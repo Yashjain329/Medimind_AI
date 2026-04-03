@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font: var(--text-label-lg);
+  color: var(--color-on-surface-variant);
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-container-highest);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  font: var(--text-body-md);
+  color: var(--color-on-surface);
+  transition: all var(--transition-fast);
+}
+.input::placeholder {
+  color: var(--color-outline);
+}
+.input:focus {
+  border-color: var(--color-primary);
+  background: var(--color-surface-container-lowest);
+  box-shadow: 0 0 0 3px rgba(0, 93, 172, 0.1);
+}
+
+.icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--color-outline);
+  display: flex;
+  pointer-events: none;
+}
+.icon + .input,
+.inputContainer:has(.icon) .input {
+  padding-left: var(--space-10);
+}
+
+/* Error state — per DESIGN.md: error text + error-container background */
+.hasError .input {
+  border-color: var(--color-error);
+  background: var(--color-error-container);
+}
+.hasError .input:focus {
+  box-shadow: 0 0 0 3px rgba(186, 26, 26, 0.1);
+}
+
+.error {
+  font: var(--text-body-sm);
+  color: var(--color-error);
+}
+.helper {
+  font: var(--text-body-sm);
+  color: var(--color-outline);
+}

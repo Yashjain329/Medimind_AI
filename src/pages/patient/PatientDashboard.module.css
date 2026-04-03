@@ -1,0 +1,30 @@
+.loading { padding: var(--space-10); text-align: center; color: var(--color-outline); animation: pulse 1.5s ease infinite; }
+.dashboard { display: flex; flex-direction: column; gap: var(--space-6); }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); }
+.grid { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-6); align-items: start; }
+.mainCol { display: flex; flex-direction: column; gap: var(--space-6); }
+.sideCol { display: flex; flex-direction: column; gap: var(--space-5); position: sticky; top: 80px; }
+.sectionTitle { font: var(--text-title-lg); color: var(--color-on-surface); margin-bottom: var(--space-3); }
+.emptyText { text-align: center; color: var(--color-outline); font: var(--text-body-md); padding: var(--space-4); }
+
+.nextApt { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.nextAptInfo { display: flex; gap: var(--space-4); align-items: center; }
+.doctorName { font: var(--text-title-md); color: var(--color-on-surface); display: block; }
+.aptDateTime { font: var(--text-label-lg); color: var(--color-primary); display: block; }
+.aptReason { font: var(--text-body-sm); color: var(--color-on-surface-variant); display: block; margin-top: 2px; }
+.nextAptActions { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); }
+
+.aptList { display: flex; flex-direction: column; gap: var(--space-2); }
+.aptRow { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+.aptDate { font: var(--text-label-lg); color: var(--color-primary); min-width: 90px; }
+.aptDoc { font: var(--text-label-md); color: var(--color-on-surface); }
+.aptReasonSmall { flex: 1; font: var(--text-body-sm); color: var(--color-outline); }
+
+.medGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
+.medCard { display: flex; align-items: center; gap: var(--space-3); }
+.medIcon { color: var(--color-primary); flex-shrink: 0; }
+.medName { font: var(--text-label-lg); color: var(--color-on-surface); display: block; }
+.medFreq { font: var(--text-body-sm); color: var(--color-outline); display: block; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }

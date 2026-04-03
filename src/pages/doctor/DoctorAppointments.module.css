@@ -1,0 +1,14 @@
+.loading { padding: var(--space-10); text-align: center; color: var(--color-outline); }
+.page { display: flex; flex-direction: column; gap: var(--space-5); }
+.header { display: flex; align-items: center; justify-content: space-between; }
+.title { font: var(--text-headline-md); color: var(--color-on-surface); }
+.filters { display: flex; gap: var(--space-1); }
+.empty { text-align: center; color: var(--color-outline); font: var(--text-body-md); padding: var(--space-4); }
+.list { display: flex; flex-direction: column; gap: var(--space-3); }
+.aptCard { display: flex; align-items: center; gap: var(--space-4); }
+.aptTime { display: flex; align-items: center; gap: var(--space-2); font: var(--text-label-md); color: var(--color-primary); min-width: 140px; }
+.aptInfo { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.aptName { font: var(--text-title-sm); color: var(--color-on-surface); }
+.aptReason { font: var(--text-body-sm); color: var(--color-on-surface-variant); }
+.aptNotes { font: var(--text-body-sm); color: var(--color-outline); font-style: italic; }
+.aptActions { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); }

@@ -1,0 +1,130 @@
+.panel {
+  border-radius: var(--radius-md);
+  background: var(--color-surface-container-low);
+  padding: var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.sparkle {
+  color: var(--color-primary);
+  animation: sparkleGlow 2s ease-in-out infinite alternate;
+}
+
+.title {
+  font: var(--text-label-lg);
+  color: var(--color-on-surface);
+}
+
+.loading {
+  font: var(--text-body-sm);
+  color: var(--color-outline);
+  padding: var(--space-3) 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-container-lowest);
+  transition: all var(--transition-fast);
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.cardAction {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  flex: 1;
+  padding: var(--space-3);
+  text-align: left;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.high .cardIcon {
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+.medium .cardIcon {
+  background: var(--color-tertiary-fixed);
+  color: var(--color-on-tertiary-fixed);
+}
+.low .cardIcon {
+  background: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cardTitle {
+  font: var(--text-label-lg);
+  color: var(--color-on-surface);
+}
+
+.cardDesc {
+  font: var(--text-body-sm);
+  color: var(--color-on-surface-variant);
+}
+
+.dismiss {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--color-outline);
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+.card:hover .dismiss { opacity: 1; }
+.dismiss:hover {
+  background: var(--color-surface-variant);
+  color: var(--color-on-surface);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes sparkleGlow {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.3); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

@@ -1,0 +1,61 @@
+/* Metric Tile — display-md value + label-md unit on surface-variant per DESIGN.md */
+.tile {
+  background: var(--color-surface-variant);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 140px;
+  position: relative;
+  animation: fadeInUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.icon {
+  color: var(--color-primary);
+  display: flex;
+}
+
+.label {
+  font: var(--text-label-md);
+  color: var(--color-on-surface-variant);
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.value {
+  font: var(--text-headline-md);
+  color: var(--color-on-primary-fixed-variant);
+}
+
+.unit {
+  font: var(--text-label-md);
+  color: var(--color-outline);
+}
+
+.trend {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  font: var(--text-label-md);
+  border-radius: var(--radius-full);
+  padding: 1px var(--space-2);
+}
+.trend.up { color: var(--color-secondary); }
+.trend.down { color: var(--color-error); }
+.trend.stable { color: var(--color-outline); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
