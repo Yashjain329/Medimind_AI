@@ -114,7 +114,7 @@ class MockDataServiceImpl implements DataService {
     return mockVisitSummaries.filter((v) => v.patientId === patientId);
   }
 
-  async uploadAvatar(userId: string, file: File): Promise<string> {
+  async uploadAvatar(_userId: string, file: File): Promise<string> {
     return URL.createObjectURL(file);
   }
 }
