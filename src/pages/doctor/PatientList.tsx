@@ -16,6 +16,9 @@ export function PatientList() {
   useEffect(() => {
     dataService.getPatients().then((p) => {
       setPatients(p);
+    }).catch((err) => {
+      console.error('[PatientList] Failed to load patients:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, []);

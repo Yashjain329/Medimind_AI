@@ -19,14 +19,18 @@ export function BookAppointment() {
   const [selectedSlot, setSelectedSlot] = useState('');
   const [reason, setReason] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
   useEffect(() => {
-    dataService.getDoctors().then(setDoctors);
+    dataService.getDoctors().then(setDoctors).catch((err) => {
+      console.error('[BookAppointment] Failed to load doctors:', err);
+    });
   }, []);
 
   const handleSubmit = async () => {
     if (!user || !selectedDoctor || !selectedDate || !selectedSlot) return;
     setSubmitting(true);
+    setBookingError(null);
     try {
       await dataService.createAppointment({
         patientId: user.id,
@@ -42,6 +46,7 @@ export function BookAppointment() {
       setStep('done');
     } catch (err) {
       console.error('Failed to create appointment:', err);
+      setBookingError(err instanceof Error ? err.message : 'Failed to book appointment. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -142,6 +147,11 @@ export function BookAppointment() {
               <div><span className={styles.confirmLabel}>Reason</span><span>{reason || 'General consultation'}</span></div>
             </div>
           </Card>
+          {bookingError && (
+            <p role="alert" style={{ color: 'var(--color-error, #d32f2f)', marginTop: '0.75rem', fontSize: '0.875rem' }}>
+              {bookingError}
+            </p>
+          )}
           <div className={styles.actions}>
             <Button variant="tertiary" onClick={() => setStep('datetime')}>Back</Button>
             <Button onClick={handleSubmit} loading={submitting} size="lg">Confirm Booking</Button>

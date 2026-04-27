@@ -20,6 +20,9 @@ export function Prescriptions() {
     ]).then(([rx, vs]) => {
       setPrescriptions(rx);
       setVisits(vs);
+    }).catch((err) => {
+      console.error('[Prescriptions] Failed to load data:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [user]);

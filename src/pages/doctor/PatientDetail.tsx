@@ -29,6 +29,9 @@ export function PatientDetail() {
       setAppointments(a);
       setPrescriptions(rx);
       setVisits(vs);
+    }).catch((err) => {
+      console.error('[PatientDetail] Failed to load data:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [id]);

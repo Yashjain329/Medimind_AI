@@ -62,9 +62,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const u = await authService.login(acct.email, acct.password);
       setUser(u);
     } catch (e) {
-      console.warn("Firebase failed for demo login. Falling back to mock data...");
-      localStorage.setItem('USE_MOCK', 'true');
-      window.location.reload();
+      console.warn('Firebase demo login failed, falling back to mock data:', e);
+      // Only reload if mock mode is not already active (prevent infinite reload loop)
+      if (localStorage.getItem('USE_MOCK') !== 'true') {
+        localStorage.setItem('USE_MOCK', 'true');
+        window.location.reload();
+      } else {
+        setError('Demo login failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }

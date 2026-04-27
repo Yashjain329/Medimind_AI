@@ -37,6 +37,11 @@ const useMock = import.meta.env.VITE_USE_MOCK_DATA === 'true' ||
                 localStorage.getItem('USE_MOCK') === 'true' || 
                 !isFirebaseConfigured;
 
+// Clear stale mock flag when Firebase is properly configured
+if (isFirebaseConfigured && import.meta.env.VITE_USE_MOCK_DATA !== 'true') {
+  localStorage.removeItem('USE_MOCK');
+}
+
 /* ============================================================
    Mock Data Implementation
    ============================================================ */

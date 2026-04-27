@@ -24,6 +24,9 @@ export function DoctorDashboard() {
     ]).then(([apts, pats]) => {
       setAppointments(apts);
       setPatients(pats);
+    }).catch((err) => {
+      console.error('[DoctorDashboard] Failed to load data:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [user]);

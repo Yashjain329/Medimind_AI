@@ -1,5 +1,4 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -13,11 +12,11 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     },
   },
-  // @ts-expect-error vitest config type
+  // vitest config — requires the test runner to interpret this field
   test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     css: { modules: { classNameStrategy: 'non-scoped' } },
   },
-});
+} as UserConfig & { test: object });

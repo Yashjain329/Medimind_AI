@@ -1,3 +1,0 @@
-﻿vite.config.ts(16,3): error TS2769: No overload matches this call.
-  The last overload gave the following error.
-    Object literal may only specify known properties, and 'test' does not exist in type 'UserConfigExport'.

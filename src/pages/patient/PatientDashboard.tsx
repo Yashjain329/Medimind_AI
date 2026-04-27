@@ -23,6 +23,9 @@ export function PatientDashboard() {
     ]).then(([a, p]) => {
       setAppointments(a);
       setPrescriptions(p);
+    }).catch((err) => {
+      console.error('[PatientDashboard] Failed to load data:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [user]);

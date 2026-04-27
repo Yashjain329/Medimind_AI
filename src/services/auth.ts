@@ -21,33 +21,46 @@ const useMock = import.meta.env.VITE_USE_MOCK_DATA === 'true' ||
                 localStorage.getItem('USE_MOCK') === 'true' || 
                 !isFirebaseConfigured;
 
+// If Firebase is properly configured and no explicit mock override in .env,
+// clear any stale USE_MOCK flag so Firebase is used on the next load.
+if (isFirebaseConfigured && import.meta.env.VITE_USE_MOCK_DATA !== 'true') {
+  localStorage.removeItem('USE_MOCK');
+}
+
 /**
  * Maps a Firebase user + Firestore profile doc to our User type.
  */
 async function mapFirebaseUser(fbUser: FirebaseUser): Promise<User> {
-  if (!db) throw new Error('Firestore not initialized');
-
   // Try fetching the user profile from Firestore
-  const userDoc = await getDoc(doc(db, 'users', fbUser.uid));
-
-  if (userDoc.exists()) {
-    const data = userDoc.data();
-    return {
-      id: fbUser.uid,
-      email: fbUser.email ?? '',
-      displayName: data['displayName'] ?? fbUser.displayName ?? 'User',
-      role: data['role'] ?? 'patient',
-      photoURL: data['photoURL'] ?? fbUser.photoURL ?? undefined,
-      createdAt: data['createdAt'] ?? new Date().toISOString(),
-    };
+  if (db) {
+    try {
+      const userDoc = await getDoc(doc(db, 'users', fbUser.uid));
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        return {
+          id: fbUser.uid,
+          email: fbUser.email ?? '',
+          displayName: data['displayName'] ?? fbUser.displayName ?? 'User',
+          role: data['role'] ?? 'patient',
+          photoURL: data['photoURL'] ?? fbUser.photoURL ?? undefined,
+          createdAt: data['createdAt'] ?? new Date().toISOString(),
+        };
+      }
+    } catch {
+      // Firestore not available — fall through to demo/default mapping
+      console.warn('[Firebase] Firestore unavailable, using fallback profile mapping');
+    }
   }
 
-  // Fallback: return as patient if no profile exists
+  // Fallback: check if this is a known demo account to get the correct role
+  const allMockUsers = [...mockDoctors, ...mockPatients];
+  const matchedMock = allMockUsers.find((u) => u.email === fbUser.email);
+
   return {
     id: fbUser.uid,
     email: fbUser.email ?? '',
-    displayName: fbUser.displayName ?? 'User',
-    role: 'patient',
+    displayName: matchedMock?.displayName ?? fbUser.displayName ?? 'User',
+    role: matchedMock?.role ?? 'patient',
     photoURL: fbUser.photoURL ?? undefined,
     createdAt: new Date().toISOString(),
   };
@@ -116,6 +129,8 @@ class FirebaseAuthServiceImpl implements AuthService {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       const user = await mapFirebaseUser(cred.user);
       this.currentUser = user;
+      // Clear any stale mock flag so we stay on Firebase mode
+      localStorage.removeItem('USE_MOCK');
       return user;
     } catch (error: any) {
       // Auto-create demo accounts if they don't exist
@@ -124,6 +139,8 @@ class FirebaseAuthServiceImpl implements AuthService {
         const newCred = await createUserWithEmailAndPassword(auth, email, password);
         const user = await mapFirebaseUser(newCred.user);
         this.currentUser = user;
+        // Clear any stale mock flag
+        localStorage.removeItem('USE_MOCK');
         return user;
       }
       throw error;

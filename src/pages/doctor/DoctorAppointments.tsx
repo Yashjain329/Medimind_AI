@@ -17,6 +17,9 @@ export function DoctorAppointments() {
     if (!user) return;
     dataService.getAppointments(user.id, 'doctor').then((a) => {
       setAppointments(a);
+    }).catch((err) => {
+      console.error('[DoctorAppointments] Failed to load appointments:', err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [user]);
